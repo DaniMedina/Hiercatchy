@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://2m7ysecys471"]
+
+[ext_resource type="FontFile" uid="uid://dao2itmb8l503" path="res://assets/fonts/Oswald-VariableFont_wght.ttf" id="1_iqlk3"]
+
+[resource]
+Label/colors/font_color = Color(0.980392, 0.380392, 0.286275, 1)
+Label/font_sizes/font_size = 73
+Label/fonts/font = ExtResource("1_iqlk3")

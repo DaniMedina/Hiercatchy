@@ -1,0 +1,122 @@
+[gd_scene load_steps=16 format=3 uid="uid://b6lkc73e76767"]
+
+[ext_resource type="Theme" uid="uid://bmttdothu4ag0" path="res://themes/general_style.tres" id="1_qge01"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="2_es5s5"]
+[ext_resource type="Texture2D" uid="uid://bbkw8dy66444" path="res://assets/images/buttons/pause_button.png" id="2_ficu8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb0ud"]
+atlas = ExtResource("2_ficu8")
+region = Rect2(0, 0, 500, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kniib"]
+atlas = ExtResource("2_ficu8")
+region = Rect2(0, 157, 500, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bkpb"]
+atlas = ExtResource("2_ficu8")
+region = Rect2(0, 314, 500, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvpw7"]
+atlas = ExtResource("2_ficu8")
+region = Rect2(0, 471, 500, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwmk3"]
+atlas = ExtResource("2_ficu8")
+region = Rect2(0, 628, 500, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye6xm"]
+atlas = ExtResource("2_ficu8")
+region = Rect2(0, 785, 500, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjfyv"]
+atlas = ExtResource("2_ficu8")
+region = Rect2(0, 942, 500, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iinbr"]
+atlas = ExtResource("2_ficu8")
+region = Rect2(0, 1099, 500, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu4gn"]
+atlas = ExtResource("2_ficu8")
+region = Rect2(0, 1256, 500, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykwnu"]
+atlas = ExtResource("2_ficu8")
+region = Rect2(0, 1413, 500, 157)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mvgj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb0ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kniib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bkpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvpw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwmk3")
+}],
+"loop": true,
+"name": &"Pause",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye6xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjfyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iinbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu4gn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykwnu")
+}],
+"loop": true,
+"name": &"Pause_hover",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hvdh"]
+size = Vector2(120, 160)
+
+[node name="PauseButton" type="Button"]
+process_mode = 1
+clip_contents = true
+custom_minimum_size = Vector2(120, 160)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1032.0
+offset_bottom = -488.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qge01")
+flat = true
+script = ExtResource("2_es5s5")
+type = 12
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(61, 75)
+sprite_frames = SubResource("SpriteFrames_mvgj6")
+animation = &"Pause"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(60, 80)
+shape = SubResource("RectangleShape2D_7hvdh")
+visibility_mode = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]

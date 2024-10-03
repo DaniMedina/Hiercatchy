@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://dbm4y7m8316oe"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_u1ht1"]
+[ext_resource type="PackedScene" uid="uid://qx1cui44en5j" path="res://scenes/button.tscn" id="2_lbo7k"]
+[ext_resource type="Texture2D" uid="uid://t00fhxxgoomk" path="res://assets/images/title/Title_1.png" id="2_pvonu"]
+[ext_resource type="Texture2D" uid="uid://redpogya57n" path="res://assets/images/title/Title_2.png" id="3_ofoqn"]
+[ext_resource type="Texture2D" uid="uid://d1tu82gqi6nat" path="res://assets/images/title/Title_3.png" id="4_hhlr2"]
+[ext_resource type="PackedScene" uid="uid://4i35bjy5optx" path="res://scenes/select_level.tscn" id="4_hlak0"]
+[ext_resource type="Texture2D" uid="uid://bx73c14wepjei" path="res://assets/images/title/Title_4.png" id="5_ibcu7"]
+[ext_resource type="PackedScene" uid="uid://db2aiuyahw7nh" path="res://scenes/level_1.tscn" id="5_nlh7u"]
+[ext_resource type="Texture2D" uid="uid://cbkiiwnat32n6" path="res://assets/images/title/Title_5.png" id="6_i87fa"]
+[ext_resource type="PackedScene" uid="uid://cs1qmp4bkc8sr" path="res://scenes/level_2.tscn" id="10_k0eqt"]
+[ext_resource type="PackedScene" uid="uid://vnskwkq1tnoy" path="res://scenes/level_3.tscn" id="11_iy1qc"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_asw7k"]
+frames = 5
+frame_0/texture = ExtResource("2_pvonu")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("3_ofoqn")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("4_hhlr2")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("5_ibcu7")
+frame_3/duration = 0.5
+frame_4/texture = ExtResource("6_i87fa")
+frame_4/duration = 0.5
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u1ht1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_asw7k")
+expand_mode = 1
+
+[node name="StartButton" parent="." instance=ExtResource("2_lbo7k")]
+clip_contents = false
+layout_mode = 1
+offset_left = 238.0
+offset_top = 434.0
+offset_right = -714.0
+offset_bottom = -151.0
+scale = Vector2(1.3664, 1.3664)
+
+[node name="ExitButton" parent="." instance=ExtResource("2_lbo7k")]
+layout_mode = 1
+offset_left = 654.0
+offset_top = 434.0
+offset_right = -298.0
+offset_bottom = -151.0
+scale = Vector2(1.367, 1.367)
+type = 1
+
+[node name="SelectLevel" parent="." instance=ExtResource("4_hlak0")]
+visible = false
+layout_mode = 1
+levels = Array[PackedScene]([ExtResource("5_nlh7u"), ExtResource("10_k0eqt"), ExtResource("11_iy1qc")])
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

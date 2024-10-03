@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjbg7t4go0he3"]
+
+[ext_resource type="Script" path="res://scripts/statemachine/state_machine.gd" id="1_c5146"]
+[ext_resource type="Script" path="res://scripts/statemachine/state_idle.gd" id="2_k15q7"]
+[ext_resource type="Script" path="res://scripts/statemachine/state_jump.gd" id="3_krt1x"]
+[ext_resource type="Script" path="res://scripts/statemachine/state_stand.gd" id="4_hx06w"]
+[ext_resource type="Script" path="res://scripts/statemachine/state_get_up.gd" id="5_eyyik"]
+
+[node name="StateMachine" type="Node" node_paths=PackedStringArray("current_state")]
+script = ExtResource("1_c5146")
+current_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="."]
+script = ExtResource("2_k15q7")
+
+[node name="JumpState" type="Node" parent="."]
+script = ExtResource("3_krt1x")
+
+[node name="StandState" type="Node" parent="."]
+script = ExtResource("4_hx06w")
+
+[node name="GetUpState" type="Node" parent="."]
+script = ExtResource("5_eyyik")

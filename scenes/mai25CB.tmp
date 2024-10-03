@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://db2aiuyahw7nh"]
+
+[ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="1_p16qp"]
+
+[sub_resource type="GDScript" id="GDScript_00r7l"]
+script/source = "extends Node2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+	
+	
+func _input(_event):
+	pass
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_00r7l")
+
+[node name="Cat" parent="." node_paths=PackedStringArray("origin", "target", "scares") instance=ExtResource("1_p16qp")]
+position = Vector2(823, 515)
+origin = NodePath("../OriginSpot3")
+target = NodePath("../TowerSpot")
+scares = NodePath("../Cat3")
+jump_speed = 5.0
+
+[node name="Cat2" parent="." node_paths=PackedStringArray("origin", "target", "scares") instance=ExtResource("1_p16qp")]
+position = Vector2(381, 515)
+origin = NodePath("../OriginSpot")
+target = NodePath("../TowerSpot2")
+scares = NodePath("../Cat")
+
+[node name="Cat3" parent="." node_paths=PackedStringArray("origin", "target", "scares") instance=ExtResource("1_p16qp")]
+position = Vector2(580, 553)
+origin = NodePath("../OriginSpot2")
+target = NodePath("../TowerSpot3")
+scares = NodePath("../Cat2")
+
+[node name="TowerSpot" type="Marker2D" parent="."]
+position = Vector2(526, 246)
+gizmo_extents = 19.0
+
+[node name="TowerSpot2" type="Marker2D" parent="."]
+position = Vector2(459, 363)
+gizmo_extents = 19.0
+
+[node name="TowerSpot3" type="Marker2D" parent="."]
+position = Vector2(605, 377)
+gizmo_extents = 19.0
+
+[node name="OriginSpot" type="Marker2D" parent="."]
+position = Vector2(382, 517)
+
+[node name="OriginSpot2" type="Marker2D" parent="."]
+position = Vector2(581, 554)
+
+[node name="OriginSpot3" type="Marker2D" parent="."]
+position = Vector2(824, 515)

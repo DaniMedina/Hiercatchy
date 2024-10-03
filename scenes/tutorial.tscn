@@ -1,0 +1,176 @@
+[gd_scene load_steps=24 format=3 uid="uid://dgmts5nak5um2"]
+
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_pi6bs"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_rjru4"]
+[ext_resource type="PackedScene" uid="uid://qdia2qxcsxlj" path="res://scenes/spot.tscn" id="2_leovm"]
+[ext_resource type="PackedScene" uid="uid://dio5oslonsi55" path="res://scenes/spot_pole.tscn" id="3_5fc8p"]
+[ext_resource type="PackedScene" uid="uid://mv0o50dmtkay" path="res://scenes/spot_foot.tscn" id="4_ho58o"]
+[ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="4_rlxx0"]
+[ext_resource type="PackedScene" uid="uid://cn3uyixme18vg" path="res://scenes/pause_menu.tscn" id="5_02nb3"]
+[ext_resource type="Texture2D" uid="uid://csnvg0vugoo48" path="res://assets/images/backgrounds/Room.png" id="6_3qgod"]
+[ext_resource type="PackedScene" uid="uid://blt0jkbi34ow2" path="res://scenes/level_cleared.tscn" id="6_pwcuc"]
+[ext_resource type="PackedScene" uid="uid://db2aiuyahw7nh" path="res://scenes/level_1.tscn" id="7_euy7n"]
+[ext_resource type="Texture2D" uid="uid://b2frl0h0kcvul" path="res://assets/images/tutorial/Arrow.png" id="8_ejix2"]
+[ext_resource type="PackedScene" uid="uid://b6lkc73e76767" path="res://scenes/pause_button.tscn" id="12_1mjm0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e57qe"]
+atlas = ExtResource("8_ejix2")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc5v1"]
+atlas = ExtResource("8_ejix2")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r55v"]
+atlas = ExtResource("8_ejix2")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnd1a"]
+atlas = ExtResource("8_ejix2")
+region = Rect2(900, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibeyk"]
+atlas = ExtResource("8_ejix2")
+region = Rect2(1200, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b2mq"]
+atlas = ExtResource("8_ejix2")
+region = Rect2(0, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drwfg"]
+atlas = ExtResource("8_ejix2")
+region = Rect2(300, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55e0t"]
+atlas = ExtResource("8_ejix2")
+region = Rect2(600, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pyq3"]
+atlas = ExtResource("8_ejix2")
+region = Rect2(900, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quo7i"]
+atlas = ExtResource("8_ejix2")
+region = Rect2(1200, 300, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hcqi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e57qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc5v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r55v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnd1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibeyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b2mq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drwfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55e0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pyq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quo7i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_rjru4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_3qgod")
+expand_mode = 1
+
+[node name="Tutorial" type="Node2D" parent="."]
+script = ExtResource("1_pi6bs")
+
+[node name="Spots" type="Node2D" parent="Tutorial"]
+position = Vector2(36, 43)
+
+[node name="Spot" parent="Tutorial/Spots" instance=ExtResource("2_leovm")]
+position = Vector2(576, 276)
+
+[node name="spot_foot" parent="Tutorial/Spots/Spot" instance=ExtResource("4_ho58o")]
+position = Vector2(2, 215)
+
+[node name="Spot_Pole" parent="Tutorial/Spots/Spot" instance=ExtResource("3_5fc8p")]
+position = Vector2(0, 62)
+
+[node name="Spot_Pole2" parent="Tutorial/Spots/Spot" instance=ExtResource("3_5fc8p")]
+position = Vector2(-2, 124)
+
+[node name="Spot_Pole3" parent="Tutorial/Spots/Spot" instance=ExtResource("3_5fc8p")]
+position = Vector2(-3, 185)
+
+[node name="Cats" type="Node2D" parent="Tutorial"]
+position = Vector2(36, 43)
+
+[node name="Cat" parent="Tutorial/Cats" instance=ExtResource("4_rlxx0")]
+position = Vector2(421, 499)
+type_index = 2
+
+[node name="Arrow" type="AnimatedSprite2D" parent="Tutorial"]
+position = Vector2(394, 454)
+scale = Vector2(0.309845, 0.309845)
+sprite_frames = SubResource("SpriteFrames_2hcqi")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.805899
+
+[node name="Step_1" type="Marker2D" parent="Tutorial"]
+position = Vector2(394, 454)
+
+[node name="Step_2" type="Marker2D" parent="Tutorial"]
+position = Vector2(546, 245)
+
+[node name="PauseButton" parent="." instance=ExtResource("12_1mjm0")]
+layout_mode = 1
+offset_left = 1073.0
+offset_top = 17.0
+offset_right = 41.0
+offset_bottom = -471.0
+scale = Vector2(0.5, 0.5)
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_02nb3")]
+visible = false
+layout_mode = 1
+
+[node name="LevelCleared" parent="." instance=ExtResource("6_pwcuc")]
+visible = false
+layout_mode = 1
+next_level = ExtResource("7_euy7n")
+
+[connection signal="level_cleared" from="Tutorial" to="." method="_on_level_cleared"]
+[connection signal="pause" from="Tutorial" to="." method="_on_level_pause"]
+[connection signal="pressed" from="PauseButton" to="Tutorial" method="start_pause"]

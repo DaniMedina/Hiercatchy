@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://blt0jkbi34ow2"]
+
+[ext_resource type="Theme" uid="uid://bmttdothu4ag0" path="res://themes/general_style.tres" id="1_1867l"]
+[ext_resource type="Script" path="res://scripts/level_cleared.gd" id="1_sywt3"]
+[ext_resource type="Texture2D" uid="uid://k2ybkyerxp1" path="res://assets/images/backgrounds/level_cleared_background.png" id="2_7ftqn"]
+[ext_resource type="PackedScene" uid="uid://qx1cui44en5j" path="res://scenes/button.tscn" id="3_qln2n"]
+[ext_resource type="AudioStream" uid="uid://ci3bw1hinjiqs" path="res://assets/fx/607926__robinhood76__10661-bonus-correct-answer.wav" id="5_4imob"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrfno"]
+atlas = ExtResource("2_7ftqn")
+region = Rect2(0, 0, 750, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrht8"]
+atlas = ExtResource("2_7ftqn")
+region = Rect2(0, 300, 750, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mpvc"]
+atlas = ExtResource("2_7ftqn")
+region = Rect2(0, 600, 750, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crqxq"]
+atlas = ExtResource("2_7ftqn")
+region = Rect2(0, 900, 750, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_falpd"]
+atlas = ExtResource("2_7ftqn")
+region = Rect2(0, 1200, 750, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3pku"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrfno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrht8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mpvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crqxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_falpd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[node name="LevelCleared" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sywt3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.290196)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(610, 320)
+sprite_frames = SubResource("SpriteFrames_p3pku")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.271421
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 355.0
+offset_top = 334.0
+offset_right = 862.0
+offset_bottom = 397.0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="NextButton" parent="HBoxContainer" instance=ExtResource("3_qln2n")]
+layout_mode = 2
+type = 5
+
+[node name="MainMenuButton" parent="HBoxContainer" instance=ExtResource("3_qln2n")]
+layout_mode = 2
+type = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 360.0
+offset_top = 228.0
+offset_right = 867.0
+offset_bottom = 559.0
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_1867l")
+text = "Level cleared!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CorrectSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_4imob")
+
+[connection signal="pressed" from="HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

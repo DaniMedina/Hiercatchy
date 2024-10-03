@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://db2aiuyahw7nh"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_p2sl3"]
+[ext_resource type="PackedScene" uid="uid://cn4n0oytctnuf" path="res://scenes/test.tscn" id="2_k7481"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q1bbw"]
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ful1"]
+size = Vector3(50, 0.2, 50)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_p2sl3")
+casteller_scene = ExtResource("2_k7481")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.80794, 6.52769)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_q1bbw")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_6ful1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.974429, -0.103367, 0.199508, 1.75834e-08, 0.887904, 0.460029, -0.224696, -0.448266, 0.865199, 0.018008, 4.00668, 0)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7551, 0)
+
+[node name="Test" parent="." instance=ExtResource("2_k7481")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.636001, 0)

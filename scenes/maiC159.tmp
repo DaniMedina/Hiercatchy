@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://db2aiuyahw7nh"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_p2sl3"]
+[ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="1_p16qp"]
+[ext_resource type="PackedScene" uid="uid://qdia2qxcsxlj" path="res://scenes/spot.tscn" id="3_f7iqc"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_p2sl3")
+
+[node name="Cats" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Cat" parent="Cats" node_paths=PackedStringArray("scares") instance=ExtResource("1_p16qp")]
+position = Vector2(823, 515)
+scares = NodePath("../Cat2")
+
+[node name="Cat2" parent="Cats" node_paths=PackedStringArray("scares") instance=ExtResource("1_p16qp")]
+position = Vector2(381, 515)
+scares = NodePath("../Cat3")
+
+[node name="Cat3" parent="Cats" node_paths=PackedStringArray("scares") instance=ExtResource("1_p16qp")]
+position = Vector2(580, 553)
+scares = NodePath("../Cat")
+
+[node name="Spots" type="Node2D" parent="."]
+
+[node name="Spot" parent="Spots" instance=ExtResource("3_f7iqc")]
+position = Vector2(457, 362)
+
+[node name="Spot2" parent="Spots" instance=ExtResource("3_f7iqc")]
+position = Vector2(526, 247)
+
+[node name="Spot3" parent="Spots" instance=ExtResource("3_f7iqc")]
+position = Vector2(606, 376)
+
+[connection signal="is_prepared" from="Cats/Cat" to="." method="_on_cat_is_prepared"]
+[connection signal="is_prepared" from="Cats/Cat2" to="." method="_on_cat_is_prepared"]
+[connection signal="is_prepared" from="Cats/Cat3" to="." method="_on_cat_is_prepared"]
+[connection signal="has_jumped" from="Spots/Spot" to="." method="_on_spot_has_jumped"]
+[connection signal="has_jumped" from="Spots/Spot2" to="." method="_on_spot_has_jumped"]
+[connection signal="has_jumped" from="Spots/Spot3" to="." method="_on_spot_has_jumped"]

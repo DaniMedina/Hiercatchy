@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://mv0o50dmtkay"]
+
+[ext_resource type="Texture2D" uid="uid://biixc2ga88x51" path="res://assets/images/spot/Spot_foot.png" id="1_m7rnr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6a5v"]
+atlas = ExtResource("1_m7rnr")
+region = Rect2(0, 0, 250, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjwpo"]
+atlas = ExtResource("1_m7rnr")
+region = Rect2(250, 0, 250, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el4el"]
+atlas = ExtResource("1_m7rnr")
+region = Rect2(500, 0, 250, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhgww"]
+atlas = ExtResource("1_m7rnr")
+region = Rect2(750, 0, 250, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nspbt"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_t6a5v")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_sjwpo")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_el4el")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_jhgww")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="spot_foot" type="Node2D"]
+z_index = -1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nspbt")
+animation = &"idle"

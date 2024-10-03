@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bmttdothu4ag0"]
+
+[sub_resource type="SystemFont" id="SystemFont_5bt8a"]
+font_names = PackedStringArray("Kristen ITC")
+
+[sub_resource type="SystemFont" id="SystemFont_0nkbj"]
+font_names = PackedStringArray("Kristen ITC")
+font_weight = 999
+
+[resource]
+Button/colors/font_color = Color(0.690196, 0.607843, 0.0156863, 1)
+Button/font_sizes/font_size = 40
+Button/fonts/font = SubResource("SystemFont_5bt8a")
+Label/colors/font_color = Color(0.690196, 0.607843, 0.0156863, 1)
+Label/font_sizes/font_size = 65
+Label/fonts/font = SubResource("SystemFont_0nkbj")

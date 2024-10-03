@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://fe5xmj3p3qqp"]
+
+[ext_resource type="Script" path="res://scripts/splash_manager.gd" id="1_3uqpn"]
+[ext_resource type="PackedScene" uid="uid://ca26a6kjc7ja6" path="res://scenes/splash_gwj.tscn" id="2_7hvvo"]
+[ext_resource type="PackedScene" uid="uid://dbm4y7m8316oe" path="res://scenes/main_menu.tscn" id="2_qsxnq"]
+[ext_resource type="PackedScene" uid="uid://dbeiyl786ufqa" path="res://scenes/splash_wildcards.tscn" id="3_mm1n8"]
+
+[node name="SplashManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3uqpn")
+move_to = ExtResource("2_qsxnq")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.133333, 0.25098, 1)
+
+[node name="SplashScreenContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="Splash_GWJ" parent="SplashScreenContainer" instance=ExtResource("2_7hvvo")]
+layout_mode = 2
+
+[node name="SplashWildcards" parent="SplashScreenContainer" instance=ExtResource("3_mm1n8")]
+layout_mode = 2

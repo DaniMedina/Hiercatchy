@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://dio5oslonsi55"]
+
+[ext_resource type="Script" path="res://scripts/spot_pole.gd" id="1_e7u08"]
+[ext_resource type="Texture2D" uid="uid://bxm6ouqgbpg65" path="res://assets/images/spot/Spot_pole.png" id="1_x1ai0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg4tu"]
+atlas = ExtResource("1_x1ai0")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he5mq"]
+atlas = ExtResource("1_x1ai0")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfw0p"]
+atlas = ExtResource("1_x1ai0")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2teg1"]
+atlas = ExtResource("1_x1ai0")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fv3jh"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_eg4tu")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_he5mq")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_gfw0p")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_2teg1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Spot_Pole" type="Node2D"]
+z_index = -1
+script = ExtResource("1_e7u08")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fv3jh")
+animation = &"idle"
+frame_progress = 0.0722649

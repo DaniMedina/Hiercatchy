@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://ch6w4i3eahb6k"]
+
+[ext_resource type="Script" path="res://scripts/beware_message.gd" id="1_cbjcr"]
+[ext_resource type="Texture2D" uid="uid://xggwsq06rtli" path="res://assets/images/backgrounds/Beware.png" id="1_ce84v"]
+[ext_resource type="PackedScene" uid="uid://qx1cui44en5j" path="res://scenes/button.tscn" id="2_gpfu4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc3kb"]
+atlas = ExtResource("1_ce84v")
+region = Rect2(0, 0, 750, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcm8m"]
+atlas = ExtResource("1_ce84v")
+region = Rect2(0, 300, 750, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk8tr"]
+atlas = ExtResource("1_ce84v")
+region = Rect2(0, 600, 750, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxyrv"]
+atlas = ExtResource("1_ce84v")
+region = Rect2(0, 900, 750, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co0md"]
+atlas = ExtResource("1_ce84v")
+region = Rect2(0, 1200, 750, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_et3vq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc3kb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcm8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk8tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxyrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co0md")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpe36"]
+size = Vector2(200, 63)
+
+[node name="BewareMessage" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cbjcr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.290196)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(590, 322)
+sprite_frames = SubResource("SpriteFrames_et3vq")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 365.0
+offset_right = 682.0
+offset_bottom = 428.0
+
+[node name="Button" parent="HBoxContainer" instance=ExtResource("2_gpfu4")]
+layout_mode = 2
+type = 2
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="HBoxContainer/Button"]
+position = Vector2(97, 33)
+shape = SubResource("RectangleShape2D_vpe36")
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

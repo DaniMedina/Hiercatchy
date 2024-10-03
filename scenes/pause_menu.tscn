@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://cn3uyixme18vg"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_2c66u"]
+[ext_resource type="Texture2D" uid="uid://qp8vn3ktovko" path="res://assets/images/backgrounds/pause_background.png" id="2_2gt0d"]
+[ext_resource type="PackedScene" uid="uid://qx1cui44en5j" path="res://scenes/button.tscn" id="2_ajnhr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8jaf"]
+atlas = ExtResource("2_2gt0d")
+region = Rect2(0, 0, 310, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1e4e"]
+atlas = ExtResource("2_2gt0d")
+region = Rect2(0, 330, 310, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txgrr"]
+atlas = ExtResource("2_2gt0d")
+region = Rect2(0, 660, 310, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjb2u"]
+atlas = ExtResource("2_2gt0d")
+region = Rect2(0, 990, 310, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmjlv"]
+atlas = ExtResource("2_2gt0d")
+region = Rect2(0, 1320, 310, 330)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7fw1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8jaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1e4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txgrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjb2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmjlv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2c66u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.290196)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(575, 326)
+sprite_frames = SubResource("SpriteFrames_e7fw1")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 159.0
+offset_right = 688.0
+offset_bottom = 490.0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="ContinueButton" parent="VBoxContainer" instance=ExtResource("2_ajnhr")]
+layout_mode = 2
+type = 2
+
+[node name="MainMenuButton" parent="VBoxContainer" instance=ExtResource("2_ajnhr")]
+layout_mode = 2
+type = 4
+
+[node name="ExitButton" parent="VBoxContainer" instance=ExtResource("2_ajnhr")]
+layout_mode = 2
+type = 1
+
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://qdia2qxcsxlj"]
+
+[ext_resource type="Script" path="res://scripts/spot.gd" id="1_emtx7"]
+[ext_resource type="Texture2D" uid="uid://n0724uguctiy" path="res://assets/images/spot/Spot_floor.png" id="2_6trds"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1guw"]
+atlas = ExtResource("2_6trds")
+region = Rect2(0, 0, 250, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfswj"]
+atlas = ExtResource("2_6trds")
+region = Rect2(250, 0, 250, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a887"]
+atlas = ExtResource("2_6trds")
+region = Rect2(500, 0, 250, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijp26"]
+atlas = ExtResource("2_6trds")
+region = Rect2(750, 0, 250, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3gku"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_p1guw")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_dfswj")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_4a887")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_ijp26")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj02j"]
+size = Vector2(179, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rltne"]
+size = Vector2(179, 76)
+
+[node name="Spot" type="Node2D"]
+script = ExtResource("1_emtx7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(11, 14)
+sprite_frames = SubResource("SpriteFrames_x3gku")
+animation = &"idle"
+frame_progress = 0.563115
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(5, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5.5, 2)
+shape = SubResource("RectangleShape2D_fj02j")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(-1, 13)
+shape = SubResource("RectangleShape2D_rltne")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="TouchScreenButton" to="." method="jump_cat"]
