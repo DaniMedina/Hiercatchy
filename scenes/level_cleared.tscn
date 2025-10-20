@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://blt0jkbi34ow2"]
+[gd_scene load_steps=14 format=3 uid="uid://blt0jkbi34ow2"]
 
 [ext_resource type="Theme" uid="uid://bmttdothu4ag0" path="res://themes/general_style.tres" id="1_1867l"]
 [ext_resource type="Script" path="res://scripts/level_cleared.gd" id="1_sywt3"]
 [ext_resource type="Texture2D" uid="uid://k2ybkyerxp1" path="res://assets/images/backgrounds/level_cleared_background.png" id="2_7ftqn"]
+[ext_resource type="Script" path="res://scripts/ui_panel.gd" id="3_5uny6"]
 [ext_resource type="PackedScene" uid="uid://qx1cui44en5j" path="res://scenes/button.tscn" id="3_qln2n"]
+[ext_resource type="PackedScene" uid="uid://ccv5jksn8tesk" path="res://scenes/label.tscn" id="4_ahf85"]
 [ext_resource type="AudioStream" uid="uid://ci3bw1hinjiqs" path="res://assets/fx/607926__robinhood76__10661-bonus-correct-answer.wav" id="5_4imob"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jrfno"]
@@ -69,11 +71,58 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.290196)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(610, 320)
 sprite_frames = SubResource("SpriteFrames_p3pku")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.271421
+
+[node name="Panel" type="Node2D" parent="."]
+
+[node name="Shadow" type="ColorRect" parent="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 266.0
+offset_top = 201.0
+offset_right = 965.0
+offset_bottom = 453.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27451, 0.211765, 0.0627451, 1)
+script = ExtResource("3_5uny6")
+is_back = true
+
+[node name="Background" type="ColorRect" parent="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 259.0
+offset_top = 194.0
+offset_right = 958.0
+offset_bottom = 446.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0.501961, 0.662745, 0.670588, 1)
+script = ExtResource("3_5uny6")
+
+[node name="Text" type="Node2D" parent="Panel"]
+
+[node name="Title" parent="Panel/Text" instance=ExtResource("4_ahf85")]
+offset_left = 608.0
+offset_top = 256.0
+offset_right = 608.0
+offset_bottom = 256.0
+theme_type_variation = &"Title_Small"
+text = "Level cleared!"
+
+[node name="Message" type="Node2D" parent="Panel/Text"]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -85,12 +134,16 @@ theme_override_constants/separation = 100
 alignment = 1
 
 [node name="NextButton" parent="HBoxContainer" instance=ExtResource("3_qln2n")]
+custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 type = 5
+is_small = true
 
 [node name="MainMenuButton" parent="HBoxContainer" instance=ExtResource("3_qln2n")]
+custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 type = 4
+is_small = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 visible = false

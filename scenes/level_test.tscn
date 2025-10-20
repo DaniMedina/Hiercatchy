@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://biwhoatigys15"]
+
+[ext_resource type="Texture2D" uid="uid://csnvg0vugoo48" path="res://assets/images/backgrounds/Room.png" id="1_y6lw2"]
+[ext_resource type="PackedScene" uid="uid://y1x7shy77koy" path="res://scenes/cats/kai.tscn" id="2_fa2o4"]
+[ext_resource type="PackedScene" uid="uid://qdia2qxcsxlj" path="res://scenes/spot.tscn" id="2_t7g31"]
+
+[node name="LevelTest" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1150.0
+offset_bottom = 646.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y6lw2")
+expand_mode = 1
+
+[node name="LevelTest" type="Node2D" parent="."]
+
+[node name="Spots" type="Node2D" parent="LevelTest"]
+
+[node name="Spot" parent="LevelTest/Spots" instance=ExtResource("2_t7g31")]
+position = Vector2(525, 348)
+
+[node name="Cats" type="Node2D" parent="LevelTest"]
+
+[node name="Kai" parent="LevelTest/Cats" instance=ExtResource("2_fa2o4")]
+position = Vector2(383, 531)
+
+[editable path="LevelTest/Cats/Kai"]
+[editable path="LevelTest/Cats/Kai/Cat"]
+[editable path="LevelTest/Cats/Kai/Cat/StateMachine"]

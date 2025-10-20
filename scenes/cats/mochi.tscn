@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8b5lm1qfniv5"]
+
+[ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="1_p00dc"]
+
+[node name="Mochi" type="Node2D"]
+
+[node name="Cat" parent="." instance=ExtResource("1_p00dc")]
+type_index = 3

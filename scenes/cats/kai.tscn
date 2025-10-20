@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://y1x7shy77koy"]
+
+[ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="1_0supr"]
+
+[node name="Kai" type="Node2D"]
+
+[node name="Cat" parent="." instance=ExtResource("1_0supr")]
+type_index = 1
+traits_index = Array[int]([1, 2])

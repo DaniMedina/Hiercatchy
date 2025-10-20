@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbm4y7m8316oe"]
+[gd_scene load_steps=16 format=3 uid="uid://dbm4y7m8316oe"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_u1ht1"]
 [ext_resource type="PackedScene" uid="uid://qx1cui44en5j" path="res://scenes/button.tscn" id="2_lbo7k"]
 [ext_resource type="Texture2D" uid="uid://t00fhxxgoomk" path="res://assets/images/title/Title_1.png" id="2_pvonu"]
+[ext_resource type="PackedScene" uid="uid://ccv5jksn8tesk" path="res://scenes/label.tscn" id="2_wyv3a"]
 [ext_resource type="Texture2D" uid="uid://redpogya57n" path="res://assets/images/title/Title_2.png" id="3_ofoqn"]
 [ext_resource type="Texture2D" uid="uid://d1tu82gqi6nat" path="res://assets/images/title/Title_3.png" id="4_hhlr2"]
 [ext_resource type="PackedScene" uid="uid://4i35bjy5optx" path="res://scenes/select_level.tscn" id="4_hlak0"]
@@ -11,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cbkiiwnat32n6" path="res://assets/images/title/Title_5.png" id="6_i87fa"]
 [ext_resource type="PackedScene" uid="uid://cs1qmp4bkc8sr" path="res://scenes/level_2.tscn" id="10_k0eqt"]
 [ext_resource type="PackedScene" uid="uid://vnskwkq1tnoy" path="res://scenes/level_3.tscn" id="11_iy1qc"]
+[ext_resource type="Script" path="res://scripts/ui_label.gd" id="12_fwe0o"]
+[ext_resource type="Theme" uid="uid://bmttdothu4ag0" path="res://themes/general_style.tres" id="12_qy6je"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_asw7k"]
 frames = 5
@@ -35,7 +38,57 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u1ht1")
 
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.501961, 0.662745, 0.670588, 1)
+
+[node name="Label" parent="." instance=ExtResource("2_wyv3a")]
+offset_left = 576.0
+offset_top = 224.0
+offset_right = 576.0
+offset_bottom = 224.0
+theme_type_variation = &"Title"
+text = "Hiercatchy"
+
+[node name="Title" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 144.0
+offset_right = 1022.0
+offset_bottom = 363.0
+theme = ExtResource("12_qy6je")
+theme_type_variation = &"TitleShadowLabel"
+text = "Hiercatchy"
+script = ExtResource("12_fwe0o")
+is_back = true
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 142.0
+offset_right = 1020.0
+offset_bottom = 361.0
+theme = ExtResource("12_qy6je")
+theme_type_variation = &"TitleLabel"
+text = "Hiercatchy"
+script = ExtResource("12_fwe0o")
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,19 +101,17 @@ expand_mode = 1
 [node name="StartButton" parent="." instance=ExtResource("2_lbo7k")]
 clip_contents = false
 layout_mode = 1
-offset_left = 238.0
-offset_top = 434.0
-offset_right = -714.0
-offset_bottom = -151.0
-scale = Vector2(1.3664, 1.3664)
+offset_left = 281.0
+offset_top = 480.0
+offset_right = -661.0
+offset_bottom = -105.0
 
 [node name="ExitButton" parent="." instance=ExtResource("2_lbo7k")]
 layout_mode = 1
-offset_left = 654.0
-offset_top = 434.0
-offset_right = -298.0
-offset_bottom = -151.0
-scale = Vector2(1.367, 1.367)
+offset_left = 645.0
+offset_top = 480.0
+offset_right = -297.0
+offset_bottom = -105.0
 type = 1
 
 [node name="SelectLevel" parent="." instance=ExtResource("4_hlak0")]

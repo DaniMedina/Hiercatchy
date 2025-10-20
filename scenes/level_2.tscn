@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs1qmp4bkc8sr"]
+[gd_scene load_steps=15 format=3 uid="uid://cs1qmp4bkc8sr"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_5654g"]
 [ext_resource type="Texture2D" uid="uid://csnvg0vugoo48" path="res://assets/images/backgrounds/Room.png" id="2_7weec"]
@@ -8,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://mv0o50dmtkay" path="res://scenes/spot_foot.tscn" id="5_17s8x"]
 [ext_resource type="PackedScene" uid="uid://blt0jkbi34ow2" path="res://scenes/level_cleared.tscn" id="5_abjjc"]
 [ext_resource type="PackedScene" uid="uid://dio5oslonsi55" path="res://scenes/spot_pole.tscn" id="6_idxhm"]
+[ext_resource type="PackedScene" uid="uid://y1x7shy77koy" path="res://scenes/cats/kai.tscn" id="7_32f56"]
 [ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="7_mkkay"]
+[ext_resource type="PackedScene" uid="uid://b8s2mbka4143t" path="res://scenes/cats/kibo.tscn" id="8_a0rxd"]
+[ext_resource type="PackedScene" uid="uid://lh4msuslj168" path="res://scenes/cats/chihiro.tscn" id="9_alo2b"]
 [ext_resource type="PackedScene" uid="uid://vnskwkq1tnoy" path="res://scenes/level_3.tscn" id="10_ll5sv"]
 [ext_resource type="PackedScene" uid="uid://b6lkc73e76767" path="res://scenes/pause_button.tscn" id="11_kfco7"]
 
@@ -89,6 +92,18 @@ position = Vector2(-10, 112)
 
 [node name="Cats" type="Node2D" parent="Level_2"]
 position = Vector2(107, 5)
+
+[node name="Kai" parent="Level_2/Cats" instance=ExtResource("7_32f56")]
+visible = false
+position = Vector2(291, 520)
+
+[node name="Kibo" parent="Level_2/Cats" instance=ExtResource("8_a0rxd")]
+visible = false
+position = Vector2(542, 556)
+
+[node name="Chihiro" parent="Level_2/Cats" instance=ExtResource("9_alo2b")]
+visible = false
+position = Vector2(822, 516)
 
 [node name="Cat" parent="Level_2/Cats" node_paths=PackedStringArray("scares") instance=ExtResource("7_mkkay")]
 position = Vector2(291, 519)

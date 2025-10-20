@@ -1,103 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6lkc73e76767"]
+[gd_scene load_steps=6 format=3 uid="uid://b6lkc73e76767"]
 
 [ext_resource type="Theme" uid="uid://bmttdothu4ag0" path="res://themes/general_style.tres" id="1_qge01"]
 [ext_resource type="Script" path="res://scripts/button.gd" id="2_es5s5"]
-[ext_resource type="Texture2D" uid="uid://bbkw8dy66444" path="res://assets/images/buttons/pause_button.png" id="2_ficu8"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pb0ud"]
-atlas = ExtResource("2_ficu8")
-region = Rect2(0, 0, 500, 157)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kniib"]
-atlas = ExtResource("2_ficu8")
-region = Rect2(0, 157, 500, 157)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3bkpb"]
-atlas = ExtResource("2_ficu8")
-region = Rect2(0, 314, 500, 157)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cvpw7"]
-atlas = ExtResource("2_ficu8")
-region = Rect2(0, 471, 500, 157)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mwmk3"]
-atlas = ExtResource("2_ficu8")
-region = Rect2(0, 628, 500, 157)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ye6xm"]
-atlas = ExtResource("2_ficu8")
-region = Rect2(0, 785, 500, 157)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjfyv"]
-atlas = ExtResource("2_ficu8")
-region = Rect2(0, 942, 500, 157)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iinbr"]
-atlas = ExtResource("2_ficu8")
-region = Rect2(0, 1099, 500, 157)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cu4gn"]
-atlas = ExtResource("2_ficu8")
-region = Rect2(0, 1256, 500, 157)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ykwnu"]
-atlas = ExtResource("2_ficu8")
-region = Rect2(0, 1413, 500, 157)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mvgj6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pb0ud")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kniib")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3bkpb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cvpw7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mwmk3")
-}],
-"loop": true,
-"name": &"Pause",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ye6xm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fjfyv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iinbr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cu4gn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ykwnu")
-}],
-"loop": true,
-"name": &"Pause_hover",
-"speed": 2.0
-}]
+[ext_resource type="Script" path="res://scripts/ui_panel.gd" id="3_pmwdw"]
+[ext_resource type="PackedScene" uid="uid://ccv5jksn8tesk" path="res://scenes/label.tscn" id="5_1e4ox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hvdh"]
-size = Vector2(120, 160)
+size = Vector2(130, 160)
 
 [node name="PauseButton" type="Button"]
 process_mode = 1
 clip_contents = true
-custom_minimum_size = Vector2(120, 160)
+custom_minimum_size = Vector2(130, 160)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1032.0
+offset_right = -1022.0
 offset_bottom = -488.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -106,10 +24,42 @@ flat = true
 script = ExtResource("2_es5s5")
 type = 12
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(61, 75)
-sprite_frames = SubResource("SpriteFrames_mvgj6")
-animation = &"Pause"
+[node name="Panels" type="Node2D" parent="."]
+skew = 0.10472
+
+[node name="Shadow" type="ColorRect" parent="Panels"]
+offset_left = 25.7271
+offset_top = 11.0611
+offset_right = 65.7271
+offset_bottom = 51.0611
+scale = Vector2(2.56214, 3.4851)
+mouse_filter = 2
+color = Color(0.27451, 0.211765, 0.0627451, 1)
+script = ExtResource("3_pmwdw")
+is_button = true
+is_back = true
+
+[node name="Background" type="ColorRect" parent="Panels"]
+offset_left = 19.4121
+offset_top = 8.04407
+offset_right = 59.4121
+offset_bottom = 48.0441
+scale = Vector2(2.562, 3.485)
+mouse_filter = 2
+theme = ExtResource("1_qge01")
+color = Color(0.890196, 0.717647, 0.435294, 1)
+script = ExtResource("3_pmwdw")
+is_button = true
+
+[node name="Texts" type="Node2D" parent="."]
+
+[node name="Label" parent="Texts" instance=ExtResource("5_1e4ox")]
+offset_left = 61.0
+offset_top = 76.0
+offset_right = 61.0
+offset_bottom = 76.0
+theme_type_variation = &"ButtonLabel"
+text = "II"
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 position = Vector2(60, 80)

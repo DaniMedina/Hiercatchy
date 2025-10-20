@@ -13,7 +13,7 @@ func _ready():
 		child.spot_filled.connect(add_filled_spot)
 		child.spot_emptied.connect(substract_filled_spot)
 	for child in $Cats.get_children():
-		child.is_prepared.connect(_on_cat_is_prepared)
+		child.find_child('Cat').is_prepared.connect(_on_cat_is_prepared)
 	get_tree().paused = false
 	pass # Replace with function body.
 

@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccv5jksn8tesk"]
+
+[ext_resource type="Script" path="res://scripts/label.gd" id="1_41wws"]
+[ext_resource type="Theme" uid="uid://bmttdothu4ag0" path="res://themes/general_style.tres" id="1_rxhju"]
+[ext_resource type="Script" path="res://scripts/ui_label.gd" id="2_q2s7k"]
+
+[node name="Label" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_rxhju")
+script = ExtResource("1_41wws")
+
+[node name="TitleShadow" type="Label" parent="." groups=["shadow"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -456.0
+offset_top = -108.0
+offset_right = 460.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "placeholder"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_q2s7k")
+is_back = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -458.0
+offset_top = -109.5
+offset_right = 458.0
+offset_bottom = 109.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "placeholder"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_q2s7k")

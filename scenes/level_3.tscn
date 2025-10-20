@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://vnskwkq1tnoy"]
+[gd_scene load_steps=15 format=3 uid="uid://vnskwkq1tnoy"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_4ikng"]
 [ext_resource type="Texture2D" uid="uid://csnvg0vugoo48" path="res://assets/images/backgrounds/Room.png" id="2_g2tq5"]
@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://qdia2qxcsxlj" path="res://scenes/spot.tscn" id="4_0khle"]
 [ext_resource type="PackedScene" uid="uid://mv0o50dmtkay" path="res://scenes/spot_foot.tscn" id="5_onuie"]
 [ext_resource type="PackedScene" uid="uid://dio5oslonsi55" path="res://scenes/spot_pole.tscn" id="6_yr28h"]
+[ext_resource type="PackedScene" uid="uid://y1x7shy77koy" path="res://scenes/cats/kai.tscn" id="7_1maox"]
 [ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="7_7vhjl"]
 [ext_resource type="PackedScene" uid="uid://cn3uyixme18vg" path="res://scenes/pause_menu.tscn" id="8_ns6h3"]
+[ext_resource type="PackedScene" uid="uid://b8s2mbka4143t" path="res://scenes/cats/kibo.tscn" id="8_yks7w"]
 [ext_resource type="PackedScene" uid="uid://blt0jkbi34ow2" path="res://scenes/level_cleared.tscn" id="9_osc2y"]
+[ext_resource type="PackedScene" uid="uid://c8b5lm1qfniv5" path="res://scenes/cats/mochi.tscn" id="9_rqtt0"]
+[ext_resource type="PackedScene" uid="uid://lh4msuslj168" path="res://scenes/cats/chihiro.tscn" id="10_a4jhd"]
 [ext_resource type="PackedScene" uid="uid://b6lkc73e76767" path="res://scenes/pause_button.tscn" id="10_ticeh"]
 
 [node name="Level_3" type="Control"]
@@ -108,6 +112,22 @@ position = Vector2(-10, 167)
 
 [node name="Cats" type="Node2D" parent="Level_3"]
 position = Vector2(107, 5)
+
+[node name="Kai" parent="Level_3/Cats" instance=ExtResource("7_1maox")]
+visible = false
+position = Vector2(307, 555)
+
+[node name="Kibo" parent="Level_3/Cats" instance=ExtResource("8_yks7w")]
+visible = false
+position = Vector2(477, 535)
+
+[node name="Mochi" parent="Level_3/Cats" instance=ExtResource("9_rqtt0")]
+visible = false
+position = Vector2(625, 567)
+
+[node name="Chihiro" parent="Level_3/Cats" instance=ExtResource("10_a4jhd")]
+visible = false
+position = Vector2(785, 539)
 
 [node name="Cat" parent="Level_3/Cats" node_paths=PackedStringArray("scares") instance=ExtResource("7_7vhjl")]
 position = Vector2(309, 554)

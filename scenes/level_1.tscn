@@ -1,14 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://db2aiuyahw7nh"]
+[gd_scene load_steps=14 format=3 uid="uid://db2aiuyahw7nh"]
 
 [ext_resource type="Texture2D" uid="uid://csnvg0vugoo48" path="res://assets/images/backgrounds/Room.png" id="1_felq4"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_lli1a"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_mongi"]
-[ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="2_sfjdr"]
 [ext_resource type="PackedScene" uid="uid://qdia2qxcsxlj" path="res://scenes/spot.tscn" id="3_0ytfe"]
 [ext_resource type="PackedScene" uid="uid://dio5oslonsi55" path="res://scenes/spot_pole.tscn" id="4_35q2j"]
 [ext_resource type="PackedScene" uid="uid://mv0o50dmtkay" path="res://scenes/spot_foot.tscn" id="4_cy8o1"]
 [ext_resource type="PackedScene" uid="uid://cn3uyixme18vg" path="res://scenes/pause_menu.tscn" id="5_iw4ax"]
+[ext_resource type="PackedScene" uid="uid://c8b5lm1qfniv5" path="res://scenes/cats/mochi.tscn" id="7_iewhw"]
 [ext_resource type="PackedScene" uid="uid://blt0jkbi34ow2" path="res://scenes/level_cleared.tscn" id="7_vcs25"]
+[ext_resource type="PackedScene" uid="uid://b8s2mbka4143t" path="res://scenes/cats/kibo.tscn" id="8_up0o6"]
 [ext_resource type="PackedScene" uid="uid://cs1qmp4bkc8sr" path="res://scenes/level_2.tscn" id="10_8w648"]
 [ext_resource type="PackedScene" uid="uid://ch6w4i3eahb6k" path="res://scenes/beware_message.tscn" id="10_ov4dp"]
 [ext_resource type="PackedScene" uid="uid://b6lkc73e76767" path="res://scenes/pause_button.tscn" id="12_xo1wf"]
@@ -76,15 +77,11 @@ position = Vector2(-11, 169)
 [node name="Cats" type="Node2D" parent="Level_1"]
 position = Vector2(107, 5)
 
-[node name="Cat" parent="Level_1/Cats" node_paths=PackedStringArray("scares") instance=ExtResource("2_sfjdr")]
-position = Vector2(330, 550)
-type_index = 2
-scares = [null]
+[node name="Mochi" parent="Level_1/Cats" instance=ExtResource("7_iewhw")]
+position = Vector2(331, 549)
 
-[node name="Cat2" parent="Level_1/Cats" node_paths=PackedStringArray("scares") instance=ExtResource("2_sfjdr")]
+[node name="Kibo" parent="Level_1/Cats" instance=ExtResource("8_up0o6")]
 position = Vector2(806, 520)
-type_index = 1
-scares = [NodePath("../Cat")]
 
 [node name="PauseButton" parent="." instance=ExtResource("12_xo1wf")]
 layout_mode = 1

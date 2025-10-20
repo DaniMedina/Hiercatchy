@@ -15,5 +15,7 @@ func manageState():
 		'GetUpState': pass
 		'StandState': pass
 		'JumpState': pass
+		'ScaredState': pass
 		'OnTowerState': pass
+		'GetDownState': pass
 	pass

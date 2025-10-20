@@ -1,51 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ch6w4i3eahb6k"]
+[gd_scene load_steps=6 format=3 uid="uid://ch6w4i3eahb6k"]
 
 [ext_resource type="Script" path="res://scripts/beware_message.gd" id="1_cbjcr"]
-[ext_resource type="Texture2D" uid="uid://xggwsq06rtli" path="res://assets/images/backgrounds/Beware.png" id="1_ce84v"]
 [ext_resource type="PackedScene" uid="uid://qx1cui44en5j" path="res://scenes/button.tscn" id="2_gpfu4"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wc3kb"]
-atlas = ExtResource("1_ce84v")
-region = Rect2(0, 0, 750, 300)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qcm8m"]
-atlas = ExtResource("1_ce84v")
-region = Rect2(0, 300, 750, 300)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rk8tr"]
-atlas = ExtResource("1_ce84v")
-region = Rect2(0, 600, 750, 300)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kxyrv"]
-atlas = ExtResource("1_ce84v")
-region = Rect2(0, 900, 750, 300)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_co0md"]
-atlas = ExtResource("1_ce84v")
-region = Rect2(0, 1200, 750, 300)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_et3vq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wc3kb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qcm8m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rk8tr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kxyrv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_co0md")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 2.0
-}]
+[ext_resource type="PackedScene" uid="uid://ccv5jksn8tesk" path="res://scenes/label.tscn" id="3_iyg2g"]
+[ext_resource type="Script" path="res://scripts/ui_panel.gd" id="3_o373h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpe36"]
 size = Vector2(200, 63)
@@ -69,22 +27,69 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.290196)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(590, 322)
-sprite_frames = SubResource("SpriteFrames_et3vq")
-animation = &"idle"
-autoplay = "idle"
+[node name="Panel" type="Node2D" parent="."]
+
+[node name="Shadow" type="ColorRect" parent="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 329.0
+offset_top = 200.0
+offset_right = 839.0
+offset_bottom = 455.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27451, 0.211765, 0.0627451, 1)
+script = ExtResource("3_o373h")
+is_back = true
+
+[node name="Background" type="ColorRect" parent="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 830.0
+offset_bottom = 447.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0.501961, 0.662745, 0.670588, 1)
+script = ExtResource("3_o373h")
+
+[node name="Text" type="Node2D" parent="Panel"]
+
+[node name="Label" parent="Panel/Text" instance=ExtResource("3_iyg2g")]
+offset_left = 576.0
+offset_top = 256.0
+offset_right = 576.0
+offset_bottom = 256.0
+theme_type_variation = &"Title_Small"
+text = "Beware!"
+
+[node name="Message" parent="Panel/Text" instance=ExtResource("3_iyg2g")]
+visible = false
+offset_left = 577.0
+offset_top = 312.0
+offset_right = 577.0
+offset_bottom = 312.0
+text = "Some cats will scare others while jumping. Keep that in mind to place them in the correct order."
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 482.0
-offset_top = 365.0
+offset_left = 472.0
+offset_top = 354.0
 offset_right = 682.0
-offset_bottom = 428.0
+offset_bottom = 417.0
 
 [node name="Button" parent="HBoxContainer" instance=ExtResource("2_gpfu4")]
 layout_mode = 2
 type = 2
+is_small = true
 
 [node name="TouchScreenButton2" type="TouchScreenButton" parent="HBoxContainer/Button"]
 position = Vector2(97, 33)

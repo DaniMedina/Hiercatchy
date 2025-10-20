@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://rfcsh3jqmrbr"]
+
+[ext_resource type="Script" path="res://scripts/custom_cat.gd" id="1_y01ol"]
+[ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="2_8pdqy"]
+
+[node name="CustomCat" type="Node2D"]
+script = ExtResource("1_y01ol")
+
+[node name="Cat" parent="." instance=ExtResource("2_8pdqy")]

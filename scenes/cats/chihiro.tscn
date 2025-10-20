@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://lh4msuslj168"]
+
+[ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="1_xb007"]
+
+[node name="Chihiro" type="Node2D"]
+
+[node name="Cat" parent="." instance=ExtResource("1_xb007")]
+type_index = 4
