@@ -1,6 +1,7 @@
 class_name StandState extends CatState
 
 func Enter(_previous_state: State):
+	actor.checkFlip();
 	animated_sprite.play("stand_"+actor.type)
 	
 func Input_update(_event):

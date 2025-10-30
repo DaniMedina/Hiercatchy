@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://qq3u1jv0t88"]
+
+[ext_resource type="Script" path="res://scripts/traits_timer.gd" id="1_tu6su"]
+
+[node name="TraitsTimer" type="Timer"]
+one_shot = true
+script = ExtResource("1_tu6su")
+timeout_min = 1.0
+timeout_max = 5.0
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

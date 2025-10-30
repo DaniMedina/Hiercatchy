@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://biwhoatigys15"]
+[gd_scene load_steps=6 format=3 uid="uid://biwhoatigys15"]
 
 [ext_resource type="Texture2D" uid="uid://csnvg0vugoo48" path="res://assets/images/backgrounds/Room.png" id="1_y6lw2"]
 [ext_resource type="PackedScene" uid="uid://y1x7shy77koy" path="res://scenes/cats/kai.tscn" id="2_fa2o4"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="2_ralmt"]
 [ext_resource type="PackedScene" uid="uid://qdia2qxcsxlj" path="res://scenes/spot.tscn" id="2_t7g31"]
+[ext_resource type="PackedScene" uid="uid://qq3u1jv0t88" path="res://scenes/traits_timer.tscn" id="5_htqli"]
 
 [node name="LevelTest" type="Control"]
 layout_mode = 3
@@ -24,6 +26,8 @@ texture = ExtResource("1_y6lw2")
 expand_mode = 1
 
 [node name="LevelTest" type="Node2D" parent="."]
+script = ExtResource("2_ralmt")
+active_traits = true
 
 [node name="Spots" type="Node2D" parent="LevelTest"]
 
@@ -34,6 +38,16 @@ position = Vector2(525, 348)
 
 [node name="Kai" parent="LevelTest/Cats" instance=ExtResource("2_fa2o4")]
 position = Vector2(383, 531)
+
+[node name="Cat" parent="LevelTest/Cats/Kai" index="0"]
+active_traits_index = Array[int]([0, 1])
+
+[node name="RestlessState" parent="LevelTest/Cats/Kai/Cat/StateMachine" index="7" node_paths=PackedStringArray("actor")]
+actor = NodePath("../..")
+
+[node name="TraitsTimer" parent="LevelTest" instance=ExtResource("5_htqli")]
+
+[connection signal="timeout" from="LevelTest/TraitsTimer" to="LevelTest" method="_on_traits_timer_timeout"]
 
 [editable path="LevelTest/Cats/Kai"]
 [editable path="LevelTest/Cats/Kai/Cat"]
