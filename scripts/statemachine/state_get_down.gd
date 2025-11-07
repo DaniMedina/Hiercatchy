@@ -7,6 +7,13 @@ func Enter(_previous_state: State):
 	elif _previous_state.name == 'ScaredState':
 		animated_sprite.animation_finished.connect(_on_getdown_finished)
 		animated_sprite.play("getdown_"+actor.type)
+	elif _previous_state.name == 'GetUpState':
+		animated_sprite.animation_finished.connect(_on_getup_reversed_finished)
+		var current_frame = animated_sprite.get_frame()
+		var current_progress = animated_sprite.get_frame_progress()
+		animated_sprite.play_backwards("")
+		animated_sprite.set_frame_and_progress(current_frame, current_progress)
+		pass
 
 func Exit():
 	if animated_sprite.animation_finished.is_connected(_on_getdown_finished): animated_sprite.animation_finished.disconnect(_on_getdown_finished)

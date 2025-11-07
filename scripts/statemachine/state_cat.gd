@@ -4,18 +4,38 @@ class_name CatState extends State
 @onready var animated_sprite = actor.get_node("AnimatedSprite2D")
 
 func Input_update(_event: InputEvent):
-	if _event is InputEventMouseButton && actor.on_focus:
-		if _event.is_action_pressed("action"):
-			manageState()				
+	if _event is InputEventMouseButton && _event.is_action_pressed("action"):
+		manageState()
 	pass
 
 func manageState():
 	match(name):
-		'IdleState': transitioned.emit('GetUpState')
-		'GetUpState': pass
-		'StandState': pass
+		'IdleState': 
+			if actor.on_focus: 
+				actor.is_getting_up.emit(actor)
+				transitioned.emit('GetUpState')
+		'GetUpState':
+			if actor.on_focus: transitioned.emit('GetDownState')
+		'StandState': 
+			if actor.on_focus: transitioned.emit('GetDownState')
+			elif actor.target != null: transitioned.emit('JumpState')
 		'JumpState': pass
-		'ScaredState': pass
-		'OnTowerState': pass
-		'GetDownState': pass
+		'ScaredState':
+			actor.target = null
+		'OnTowerState':
+			if actor.on_focus: 
+				transitioned.emit('ScaredState')
+		'GetDownState':
+			if actor.on_focus: 
+				actor.is_getting_up.emit(actor)
+				transitioned.emit('GetUpState')
+		'PlayFrontState': 
+			if actor.on_focus: transitioned.emit('OnTowerState')
+		'RestlessState': 
+			if actor.on_focus: transitioned.emit('OnTowerState')
 	pass
+
+func get_down_if_stand():
+	match(name):
+		'StandState': transitioned.emit('GetDownState')
+		'GetUpState': transitioned.emit('GetDownState')

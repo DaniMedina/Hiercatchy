@@ -2,6 +2,7 @@ extends Node
 
 signal prepared_cat_changed
 
+var test: bool = true
 var menu_scene: PackedScene = preload("res://scenes/main_menu.tscn")
 var prepared_cat: Node2D = null
 

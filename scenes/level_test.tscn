@@ -40,10 +40,7 @@ position = Vector2(525, 348)
 position = Vector2(383, 531)
 
 [node name="Cat" parent="LevelTest/Cats/Kai" index="0"]
-active_traits_index = Array[int]([0, 1])
-
-[node name="RestlessState" parent="LevelTest/Cats/Kai/Cat/StateMachine" index="7" node_paths=PackedStringArray("actor")]
-actor = NodePath("../..")
+jump_speed = 5.0
 
 [node name="TraitsTimer" parent="LevelTest" instance=ExtResource("5_htqli")]
 

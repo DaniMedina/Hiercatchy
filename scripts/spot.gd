@@ -2,6 +2,7 @@ extends Node2D
 
 signal spot_filled
 signal spot_emptied
+signal spot_selected
 
 @export var affected_spots: Array[Node2D] = []
 
@@ -21,7 +22,8 @@ func _process(_delta):
 	
 func _input(_event):
 	if on_focus && Input.is_action_just_pressed("action"):
-		jump_cat()
+		#jump_cat()
+		spot_selected.emit(self)
 	pass
 
 func set_prepared_cat(cat: Node2D):

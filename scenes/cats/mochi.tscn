@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8b5lm1qfniv5"]
+[gd_scene load_steps=3 format=3 uid="uid://c8b5lm1qfniv5"]
 
+[ext_resource type="Script" path="res://scripts/cat_accessors.gd" id="1_7pu27"]
 [ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="1_p00dc"]
 
 [node name="Mochi" type="Node2D"]
+script = ExtResource("1_7pu27")
 
 [node name="Cat" parent="." instance=ExtResource("1_p00dc")]
 type_index = 3

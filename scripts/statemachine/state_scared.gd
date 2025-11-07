@@ -1,7 +1,8 @@
 class_name ScaredState extends CatState
 
 func Enter(_previous_state):
-	actor.set_ready_to_trait(false)
+	#actor.set_ready_to_trait(false)
+	CatEffects.play_random_fx()
 	
 	actor.target_position = actor.original_position
 	actor.target.is_filled = false

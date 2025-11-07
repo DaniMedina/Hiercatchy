@@ -8,6 +8,7 @@ var stand_offset: Vector2 = Vector2(0,-30)
 var target: Node2D = null
 var on_focus: bool = false
 var is_ready_to_trait: bool = false
+var current_trait: String
 
 @export var type_index: CatInfo.types
 @export var active_traits_index: Array[CatInfo.traits_active] = []
@@ -31,6 +32,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	global_position = lerp(global_position, target_position, _delta * jump_speed)
+	if Global.test:
+		$Label.text = $StateMachine.current_state.name
 	#if !is_moving():
 		#if $StateMachine.current_state.name == 'JumpState': $StateMachine.current_state.transitioned.emit("OnTowerState")
 		#elif $StateMachine.current_state.name == 'ScaredState': $StateMachine.current_state.transitioned.emit("GetDownState")
@@ -97,7 +100,7 @@ func is_moving() -> bool:
 func prepare_cat():
 	if $StateMachine.previous_state != null && $StateMachine.current_state.name == 'OnTowerState':
 			if Global.prepared_cat == self: Global.change_prepared_cat(null)
-			scare()
+			#scare()
 	pass
 
 #
@@ -126,8 +129,11 @@ func set_ready_to_trait(value):
 
 func restless(free_spot):
 	if $StateMachine.current_state.name == 'OnTowerState':
-		scare()
+		$StateMachine.current_state.transitioned.emit('PlayFrontState')
 	elif $StateMachine.current_state.name == 'IdleState':
-		jump(free_spot)
+		pass
 	trait_has_finished.emit()
 	pass
+	
+func set_current_trait(selected_trait):
+	current_trait = selected_trait;

@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://y1x7shy77koy"]
+[gd_scene load_steps=3 format=3 uid="uid://y1x7shy77koy"]
 
 [ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="1_0supr"]
+[ext_resource type="Script" path="res://scripts/cat_accessors.gd" id="1_5dsdt"]
 
 [node name="Kai" type="Node2D"]
+script = ExtResource("1_5dsdt")
 
 [node name="Cat" parent="." instance=ExtResource("1_0supr")]
 type_index = 1

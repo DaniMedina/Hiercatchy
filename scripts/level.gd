@@ -13,10 +13,13 @@ func _ready():
 	for child in $Spots.get_children():
 		child.spot_filled.connect(add_filled_spot)
 		child.spot_emptied.connect(substract_filled_spot)
+		child.spot_selected.connect(change_selected_spot)
 	for child in $Cats.get_children():
-		child.find_child('Cat').is_prepared.connect(_on_cat_is_prepared)
-		child.find_child('Cat').trait_has_finished.connect(start_traits_timer)
-		child.find_child('Cat').ready_to_trait.connect(check_traits_timer)
+		child.find_child('Cat').is_getting_up.connect(_on_cat_is_getting_up)
+		#child.find_child('Cat').is_prepared.connect(_on_cat_is_prepared)
+		#child.find_child('Cat').trait_has_finished.connect(start_traits_timer)
+		#child.find_child('Cat').ready_to_trait.connect(check_traits_timer)
+		pass
 	
 	if (active_traits):
 		$TraitsTimer.initialize()
@@ -37,6 +40,14 @@ func _input(_event):
 	if _event.is_action_pressed("pause"):
 		start_pause()
 
+#### SIGNALS #######################################################################################
+
+func _on_cat_is_getting_up(cat: Node2D):
+	for child in $Cats.get_children():
+		if child.get_cat_node() != cat:
+			child.get_cat_current_state().get_down_if_stand()
+	pass
+
 func _on_cat_is_prepared(cat: Node2D):
 	for child in $Spots.get_children(): child.set_prepared_cat(cat)
 	pass # Replace with function body.
@@ -48,6 +59,8 @@ func _on_spot_emptied():
 func _on_spot_filled():
 	add_filled_spot()
 	pass # Replace with function body.
+
+##### CUSTOM FUNCTIONS #############################################################################
 
 func add_filled_spot():
 	filled_spots += 1
@@ -87,6 +100,7 @@ func _on_traits_timer_timeout():
 		print("Trait triggered!")
 		
 		var index = randi_range(0,len(cat.traits_active)-1)
+		cat.set_current_trait(cat.traits_active[index])
 		match(cat.traits_active[index]):
 			'playfull':
 				print("IS PLAYFULL")
@@ -97,12 +111,18 @@ func _on_traits_timer_timeout():
 				cat.restless(free_spot)
 		#cat.trigger_active_trait()
 	pass
+	
+func change_selected_spot(spot: Node2D):
+	for child in $Cats.get_children():
+		child.get_cat_node().set_target(spot)
+	pass
 
 func get_trait_ready_cats():
 	var cats = []
 	for child in $Cats.get_children():
-		if child.get_node('Cat').is_ready_to_trait:
-			cats.push_back(child.get_node('Cat'))
+		#if child.get_node('Cat').is_ready_to_trait:
+			#cats.push_back(child.get_node('Cat'))
+		pass
 	return cats
 	
 func get_random_free_spot():
