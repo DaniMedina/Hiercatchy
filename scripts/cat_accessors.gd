@@ -9,8 +9,10 @@ func _process(_delta):
 	pass
 
 ##### CUSTOM FUNCTIONS #############################################################################
+# Gets de Cat node
 func get_cat_node():
 	return $Cat
-	
+
+# Gets the cat's current state
 func get_cat_current_state():
 	return $Cat/StateMachine.current_state

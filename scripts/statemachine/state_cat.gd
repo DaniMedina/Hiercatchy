@@ -3,11 +3,13 @@ class_name CatState extends State
 @export var actor: Node2D
 @onready var animated_sprite = actor.get_node("AnimatedSprite2D")
 
+# Checks the input event
 func Input_update(_event: InputEvent):
 	if _event is InputEventMouseButton && _event.is_action_pressed("action"):
 		manageState()
 	pass
 
+# Manages the state flow
 func manageState():
 	match(name):
 		'IdleState': 
@@ -35,6 +37,7 @@ func manageState():
 			if actor.on_focus: transitioned.emit('OnTowerState')
 	pass
 
+# Trigger the get down state if standing
 func get_down_if_stand():
 	match(name):
 		'StandState': transitioned.emit('GetDownState')

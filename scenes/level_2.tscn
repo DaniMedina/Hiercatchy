@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cs1qmp4bkc8sr"]
+[gd_scene load_steps=14 format=3 uid="uid://cs1qmp4bkc8sr"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_5654g"]
 [ext_resource type="Texture2D" uid="uid://csnvg0vugoo48" path="res://assets/images/backgrounds/Room.png" id="2_7weec"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://blt0jkbi34ow2" path="res://scenes/level_cleared.tscn" id="5_abjjc"]
 [ext_resource type="PackedScene" uid="uid://dio5oslonsi55" path="res://scenes/spot_pole.tscn" id="6_idxhm"]
 [ext_resource type="PackedScene" uid="uid://y1x7shy77koy" path="res://scenes/cats/kai.tscn" id="7_32f56"]
-[ext_resource type="PackedScene" uid="uid://c0jvgxv34fsgb" path="res://scenes/cat.tscn" id="7_mkkay"]
 [ext_resource type="PackedScene" uid="uid://b8s2mbka4143t" path="res://scenes/cats/kibo.tscn" id="8_a0rxd"]
 [ext_resource type="PackedScene" uid="uid://lh4msuslj168" path="res://scenes/cats/chihiro.tscn" id="9_alo2b"]
 [ext_resource type="PackedScene" uid="uid://vnskwkq1tnoy" path="res://scenes/level_3.tscn" id="10_ll5sv"]
@@ -42,9 +41,8 @@ script = ExtResource("3_svdfp")
 [node name="Spots" type="Node2D" parent="Level_2"]
 position = Vector2(107, 5)
 
-[node name="Spot" parent="Level_2/Spots" node_paths=PackedStringArray("affected_spots") instance=ExtResource("4_4skb8")]
+[node name="Spot" parent="Level_2/Spots" instance=ExtResource("4_4skb8")]
 position = Vector2(391, 364)
-affected_spots = [NodePath("../Spot3")]
 
 [node name="spot_foot" parent="Level_2/Spots/Spot" instance=ExtResource("5_17s8x")]
 position = Vector2(128, 154)
@@ -77,9 +75,8 @@ position = Vector2(-11, 169)
 [node name="Spot_Pole4" parent="Level_2/Spots/Spot2/Pole2" instance=ExtResource("6_idxhm")]
 position = Vector2(-12, 224)
 
-[node name="Spot3" parent="Level_2/Spots" node_paths=PackedStringArray("affected_spots") instance=ExtResource("4_4skb8")]
+[node name="Spot3" parent="Level_2/Spots" instance=ExtResource("4_4skb8")]
 position = Vector2(637, 392)
-affected_spots = [NodePath("../Spot")]
 
 [node name="Pole3" type="Node2D" parent="Level_2/Spots/Spot3"]
 position = Vector2(11, -21)
@@ -94,30 +91,13 @@ position = Vector2(-10, 112)
 position = Vector2(107, 5)
 
 [node name="Kai" parent="Level_2/Cats" instance=ExtResource("7_32f56")]
-visible = false
 position = Vector2(291, 520)
 
 [node name="Kibo" parent="Level_2/Cats" instance=ExtResource("8_a0rxd")]
-visible = false
 position = Vector2(542, 556)
 
 [node name="Chihiro" parent="Level_2/Cats" instance=ExtResource("9_alo2b")]
-visible = false
 position = Vector2(822, 516)
-
-[node name="Cat" parent="Level_2/Cats" node_paths=PackedStringArray("scares") instance=ExtResource("7_mkkay")]
-position = Vector2(291, 519)
-scares = [NodePath("../Cat2"), NodePath("../Cat3")]
-
-[node name="Cat2" parent="Level_2/Cats" node_paths=PackedStringArray("scares") instance=ExtResource("7_mkkay")]
-position = Vector2(540, 555)
-type_index = 1
-scares = [NodePath("../Cat")]
-
-[node name="Cat3" parent="Level_2/Cats" node_paths=PackedStringArray("scares") instance=ExtResource("7_mkkay")]
-position = Vector2(822, 516)
-type_index = 3
-scares = [NodePath("../Cat"), NodePath("../Cat2")]
 
 [node name="PauseButton" parent="." instance=ExtResource("11_kfco7")]
 layout_mode = 1

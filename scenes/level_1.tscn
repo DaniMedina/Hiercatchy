@@ -41,9 +41,8 @@ script = ExtResource("1_mongi")
 [node name="Spots" type="Node2D" parent="Level_1"]
 position = Vector2(107, 5)
 
-[node name="Spot" parent="Level_1/Spots" node_paths=PackedStringArray("affected_spots") instance=ExtResource("3_0ytfe")]
+[node name="Spot" parent="Level_1/Spots" instance=ExtResource("3_0ytfe")]
 position = Vector2(429, 360)
-affected_spots = [NodePath("../Spot2")]
 
 [node name="spot_foot" parent="Level_1/Spots/Spot" instance=ExtResource("4_cy8o1")]
 position = Vector2(101, 154)
@@ -58,9 +57,8 @@ position = Vector2(-9, 54)
 [node name="Spot_Pole2" parent="Level_1/Spots/Spot/Pole" instance=ExtResource("4_35q2j")]
 position = Vector2(-10, 112)
 
-[node name="Spot2" parent="Level_1/Spots" node_paths=PackedStringArray("affected_spots") instance=ExtResource("3_0ytfe")]
+[node name="Spot2" parent="Level_1/Spots" instance=ExtResource("3_0ytfe")]
 position = Vector2(625, 315)
-affected_spots = [NodePath("../Spot")]
 
 [node name="Pole2" type="Node2D" parent="Level_1/Spots/Spot2"]
 position = Vector2(7, 1)
@@ -106,3 +104,4 @@ layout_mode = 1
 [connection signal="level_cleared" from="Level_1" to="." method="_on_level_cleared"]
 [connection signal="pause" from="Level_1" to="." method="_on_level_pause"]
 [connection signal="pressed" from="PauseButton" to="Level_1" method="start_pause"]
+[connection signal="unpause" from="PauseMenu" to="." method="_on_pause_menu_unpause"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://qdia2qxcsxlj"]
 
-[ext_resource type="Script" path="res://scripts/spot.gd" id="1_emtx7"]
+[ext_resource type="Script" path="res://scripts/spot.gd" id="1_oncg5"]
 [ext_resource type="Texture2D" uid="uid://n0724uguctiy" path="res://assets/images/spot/Spot_floor.png" id="2_6trds"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1guw"]
@@ -46,7 +46,7 @@ size = Vector2(179, 76)
 size = Vector2(179, 76)
 
 [node name="Spot" type="Node2D"]
-script = ExtResource("1_emtx7")
+script = ExtResource("1_oncg5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(11, 14)
@@ -67,4 +67,3 @@ shape = SubResource("RectangleShape2D_rltne")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
-[connection signal="pressed" from="TouchScreenButton" to="." method="jump_cat"]

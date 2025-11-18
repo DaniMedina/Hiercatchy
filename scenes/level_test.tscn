@@ -1,15 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://biwhoatigys15"]
+[gd_scene load_steps=12 format=3 uid="uid://biwhoatigys15"]
 
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_velj0"]
 [ext_resource type="Texture2D" uid="uid://csnvg0vugoo48" path="res://assets/images/backgrounds/Room.png" id="1_y6lw2"]
 [ext_resource type="PackedScene" uid="uid://y1x7shy77koy" path="res://scenes/cats/kai.tscn" id="2_fa2o4"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="2_ralmt"]
 [ext_resource type="PackedScene" uid="uid://qdia2qxcsxlj" path="res://scenes/spot.tscn" id="2_t7g31"]
-[ext_resource type="PackedScene" uid="uid://qq3u1jv0t88" path="res://scenes/traits_timer.tscn" id="5_htqli"]
+[ext_resource type="PackedScene" uid="uid://b8s2mbka4143t" path="res://scenes/cats/kibo.tscn" id="5_7bj6y"]
+[ext_resource type="PackedScene" uid="uid://b6lkc73e76767" path="res://scenes/pause_button.tscn" id="8_fxhyl"]
+[ext_resource type="PackedScene" uid="uid://cn3uyixme18vg" path="res://scenes/pause_menu.tscn" id="9_kxmj7"]
+[ext_resource type="PackedScene" uid="uid://blt0jkbi34ow2" path="res://scenes/level_cleared.tscn" id="10_gmkrw"]
+[ext_resource type="PackedScene" uid="uid://cs1qmp4bkc8sr" path="res://scenes/level_2.tscn" id="11_g5o7g"]
+[ext_resource type="PackedScene" uid="uid://ch6w4i3eahb6k" path="res://scenes/beware_message.tscn" id="12_rs2ke"]
 
 [node name="LevelTest" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 1
+script = ExtResource("1_velj0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -34,18 +41,36 @@ active_traits = true
 [node name="Spot" parent="LevelTest/Spots" instance=ExtResource("2_t7g31")]
 position = Vector2(525, 348)
 
+[node name="Spot2" parent="LevelTest/Spots" instance=ExtResource("2_t7g31")]
+position = Vector2(790, 376)
+
 [node name="Cats" type="Node2D" parent="LevelTest"]
 
 [node name="Kai" parent="LevelTest/Cats" instance=ExtResource("2_fa2o4")]
 position = Vector2(383, 531)
 
-[node name="Cat" parent="LevelTest/Cats/Kai" index="0"]
-jump_speed = 5.0
+[node name="Kibo" parent="LevelTest/Cats" instance=ExtResource("5_7bj6y")]
+position = Vector2(695, 547)
 
-[node name="TraitsTimer" parent="LevelTest" instance=ExtResource("5_htqli")]
+[node name="PauseButton" parent="." instance=ExtResource("8_fxhyl")]
+layout_mode = 1
+offset_left = 1073.0
+offset_top = 17.0
+offset_right = 41.0
+offset_bottom = -471.0
+scale = Vector2(0.5, 0.5)
 
-[connection signal="timeout" from="LevelTest/TraitsTimer" to="LevelTest" method="_on_traits_timer_timeout"]
+[node name="PauseMenu" parent="." instance=ExtResource("9_kxmj7")]
+visible = false
+layout_mode = 1
 
-[editable path="LevelTest/Cats/Kai"]
-[editable path="LevelTest/Cats/Kai/Cat"]
-[editable path="LevelTest/Cats/Kai/Cat/StateMachine"]
+[node name="LevelCleared" parent="." instance=ExtResource("10_gmkrw")]
+visible = false
+layout_mode = 1
+next_level = ExtResource("11_g5o7g")
+
+[node name="BewareMessage" parent="." instance=ExtResource("12_rs2ke")]
+layout_mode = 1
+
+[connection signal="level_cleared" from="LevelTest" to="." method="_on_level_cleared"]
+[connection signal="pause" from="LevelTest" to="." method="_on_level_pause"]

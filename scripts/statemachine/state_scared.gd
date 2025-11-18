@@ -5,8 +5,7 @@ func Enter(_previous_state):
 	CatEffects.play_random_fx()
 	
 	actor.target_position = actor.original_position
-	actor.target.is_filled = false
-	actor.target.spot_emptied.emit()
+	actor.target.set_filled(false)
 	actor.target = null
 	animated_sprite.speed_scale = 2
 	animated_sprite.animation_finished.connect(_on_scared_finished)

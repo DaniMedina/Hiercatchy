@@ -1,6 +1,6 @@
 [gd_scene load_steps=142 format=3 uid="uid://c0jvgxv34fsgb"]
 
-[ext_resource type="Script" path="res://scripts/cat_new.gd" id="1_1k51y"]
+[ext_resource type="Script" path="res://scripts/cat.gd" id="1_kjgrj"]
 [ext_resource type="Texture2D" uid="uid://5so4lrbxum5g" path="res://assets/images/cats/Cat_A.png" id="6_3pod5"]
 [ext_resource type="Texture2D" uid="uid://bblgtj8lvpmsy" path="res://assets/images/cats/Dummy.png" id="6_id2rf"]
 [ext_resource type="Texture2D" uid="uid://cknecfx1mctjr" path="res://assets/images/cats/Cat_B.png" id="7_h5cuj"]
@@ -1063,7 +1063,7 @@ bg_color = Color(0, 0, 0, 0.686275)
 
 [node name="Cat" type="Node2D"]
 scale = Vector2(0.7, 0.7)
-script = ExtResource("1_1k51y")
+script = ExtResource("1_kjgrj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mdxiu")
