@@ -1,5 +1,6 @@
 class_name StateMachine extends Node
 
+@export var actor: Node2D
 @export var current_state: State
 var previous_state: State
 var states: Dictionary = {}
@@ -8,6 +9,7 @@ func _ready():
 	for child in get_children():
 		if child is State:
 			states[child.name] = child
+			child.set_actor(actor)
 			child.transitioned.connect(on_child_transitioned)
 		else:
 			push_warning("State machine contains child which is not 'State: "+child.name)

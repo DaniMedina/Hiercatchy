@@ -1,7 +1,9 @@
 class_name CatState extends State
 
-@export var actor: Node2D
-@onready var animated_sprite = actor.get_node("AnimatedSprite2D")
+#@export var actor: Node2D
+#@onready var animated_sprite = actor.get_node("AnimatedSprite2D")
+var actor: Node2D
+var animated_sprite: AnimatedSprite2D = AnimatedSprite2D.new()
 
 # Checks the input event
 func Input_update(_event: InputEvent):
@@ -42,3 +44,9 @@ func get_down_if_stand():
 	match(name):
 		'StandState': transitioned.emit('GetDownState')
 		'GetUpState': transitioned.emit('GetDownState')
+
+# Sets the actor and animated_sprite
+func set_actor(new_actor: Node2D):
+	actor = new_actor
+	animated_sprite = actor.get_node("AnimatedSprite2D")
+	pass

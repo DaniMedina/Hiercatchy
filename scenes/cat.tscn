@@ -1081,34 +1081,8 @@ shape = SubResource("CapsuleShape2D_wfg2v")
 shape = SubResource("CircleShape2D_wajbg")
 visibility_mode = 1
 
-[node name="StateMachine" parent="." instance=ExtResource("10_cxhom")]
-
-[node name="IdleState" parent="StateMachine" index="0" node_paths=PackedStringArray("actor")]
-actor = NodePath("../..")
-
-[node name="GetUpState" parent="StateMachine" index="1" node_paths=PackedStringArray("actor")]
-actor = NodePath("../..")
-
-[node name="StandState" parent="StateMachine" index="2" node_paths=PackedStringArray("actor")]
-actor = NodePath("../..")
-
-[node name="JumpState" parent="StateMachine" index="3" node_paths=PackedStringArray("actor")]
-actor = NodePath("../..")
-
-[node name="OnTowerState" parent="StateMachine" index="4" node_paths=PackedStringArray("actor")]
-actor = NodePath("../..")
-
-[node name="ScaredState" parent="StateMachine" index="5" node_paths=PackedStringArray("actor")]
-actor = NodePath("../..")
-
-[node name="GetDownState" parent="StateMachine" index="6" node_paths=PackedStringArray("actor")]
-actor = NodePath("../..")
-
-[node name="RestlessState" parent="StateMachine" index="7" node_paths=PackedStringArray("actor")]
-actor = NodePath("../..")
-
-[node name="PlayFrontState" parent="StateMachine" index="8" node_paths=PackedStringArray("actor")]
-actor = NodePath("../..")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("10_cxhom")]
+actor = NodePath("..")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8
@@ -1130,5 +1104,3 @@ vertical_alignment = 1
 [connection signal="mouse_shape_entered" from="Area2D" to="." method="_on_area_2d_mouse_shape_entered"]
 [connection signal="mouse_shape_exited" from="Area2D" to="." method="_on_area_2d_mouse_shape_exited"]
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
-
-[editable path="StateMachine"]
